@@ -38,6 +38,11 @@ spec:
           type: string
           description: Enter the github URL where your code exists
           ui:autofocus: true
+        Token:
+          title: Enter your Github Token
+          type: string
+          description: Enter the GithubToken 
+          ui:autofocus: true
 
   steps:
     - id: fetch-template
