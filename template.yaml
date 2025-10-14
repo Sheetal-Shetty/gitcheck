@@ -1,9 +1,9 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: simple-nodejs-service
-  title: Project_Practice Node.js Service
-  description: Template to create a basic Node.js backend service
+  name: gitpages
+  title: deploy pages in github pages
+  description: Template to deploy static website
 spec:
   owner: user:guest
   type: service
@@ -51,7 +51,14 @@ spec:
       input:
         url: ${{ parameters.Github_URL }}
         targetPath: .
-
+    
+    - id: add-workflow
+      name: Add GitHub Pages Workflow
+      action: fetch:template
+      input:
+        url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
+        targetPath: ./.github/workflows
+        
     - id: push-to-repo
       name: Push code to GitHub
       action: publish:github
