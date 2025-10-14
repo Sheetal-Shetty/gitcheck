@@ -1,0 +1,70 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: simple-nodejs-service
+  title: Project_Practice Node.js Service
+  description: Template to create a basic Node.js backend service
+spec:
+  owner: user:guest
+  type: service
+
+  parameters:
+    - title: Fill in project details
+      required:
+        - name
+        - description
+        - owner
+      properties:
+        name:
+          title: Project Name
+          type: string
+          description: What’s the name of your project?
+          ui:autofocus: true
+        description:
+          title: Project Description
+          type: string
+          description: Brief description of your project
+        owner:
+          title: Owner
+          type: string
+          description: Who owns this project?
+    - title: GitHub Repository URL
+      required: 
+        - Github_URL
+        - Token
+      properties:
+        Github_URL:
+          title: Enter your Github URL
+          type: string
+          description: Enter the github URL where your code exists
+          ui:autofocus: true
+
+  steps:
+    - id: fetch-template
+      name: Fetch template files
+      action: fetch:plain
+      input:
+        url: ${{ parameters.Github_URL }}
+        targetPath: .
+
+    - id: push-to-repo
+      name: Push code to GitHub
+      action: publish:github
+      input:
+        repoUrl: github.com?owner=${{ parameters.owner }}&repo=${{ parameters.name }}
+        defaultBranch: main
+        repoVisibility: public
+        description: ${{ parameters.description }}
+        
+    - id: register-component
+      name: Register component in Backstage catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: https://github.com/Meghana-shetty/Cafe_static_copy/tree/main/Backstage_Meghana
+        #https://github.com/${{ parameters.owner }}/${{ parameters.name }}
+        catalogInfoPath: /Backstage_Meghana/cafe-static-website/catalog-info.yaml
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['push-to-repo'].output.repoUrl }}
