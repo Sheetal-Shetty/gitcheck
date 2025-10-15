@@ -55,15 +55,15 @@ spec:
     - id: add-workflow
       name: Add GitHub Pages Workflow
       action: fetch:template
-      input:
-        url: https://github.com/Sheetal-Shetty/CafeStaticWebsite
-        targetPath: ./.github/workflows
-        file: .github/workflows/pages.yml
-                
       # input:
-      #   #url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
-      #   url: https://raw.githubusercontent.com/Sheetal-Shetty/CafeStaticWebsite/main/.github/workflows/pages.yml
+      #   url: https://github.com/Sheetal-Shetty/CafeStaticWebsite
       #   targetPath: ./.github/workflows
+      #   file: .github/workflows/pages.yml
+                
+      input:
+        #url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
+        url: https://raw.githubusercontent.com/Sheetal-Shetty/CafeStaticWebsite/main/.github/workflows/pages.yml
+        targetPath: ./.github/workflows
         
     - id: push-to-repo
       name: Push code to GitHub
