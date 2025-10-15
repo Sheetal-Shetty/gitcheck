@@ -54,7 +54,7 @@ spec:
     
     - id: add-workflow
       name: Add GitHub Pages Workflow
-      action: fetch:template
+      action: fetch:plain
       # input:
       #   url: https://github.com/Sheetal-Shetty/CafeStaticWebsite
       #   targetPath: ./.github/workflows
