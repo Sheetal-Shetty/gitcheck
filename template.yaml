@@ -56,9 +56,9 @@ spec:
       name: Add GitHub Pages Workflow
       action: fetch:plain
       input:
-        url: https://github.com/Sheetal-Shetty/CafeStaticWebsite
-        targetPath: ./.github/workflows
-        file: .github/workflows/pages.yml
+        url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/archive/refs/heads/main.zip
+        targetPath: .
+
         
       # input:
       #   #url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
