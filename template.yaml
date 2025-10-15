@@ -54,9 +54,10 @@ spec:
     
     - id: add-workflow
       name: Add GitHub Pages Workflow
-      action: fetch:template
+      action: fetch:plain
       input:
-        url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
+        #url: https://github.com/Sheetal-Shetty/CafeStaticWebsite/blob/main/.github/workflows/pages.yml
+        url: https://raw.githubusercontent.com/Sheetal-Shetty/CafeStaticWebsite/main/.github/workflows/pages.yml
         targetPath: ./.github/workflows
         
     - id: push-to-repo
